@@ -40,12 +40,12 @@ connections using NetworkManager.
 install -Dm755 connex.py %{buildroot}/usr/bin/connex
 
 # Assets
-install -Dm644 assets/core/speedtest.py %{buildroot}/usr/lib/%{name}/assets/core/speedtest.py
-install -Dm644 assets/tray/system_tray.py %{buildroot}/usr/lib/%{name}/assets/tray/system_tray.py
-install -Dm644 assets/utils/debug.py %{buildroot}/usr/lib/%{name}/assets/utils/debug.py
-install -Dm644 assets/ui/dialogs.py %{buildroot}/usr/lib/%{name}/assets/ui/dialogs.py
-install -Dm644 assets/ui/main_window.py %{buildroot}/usr/lib/%{name}/assets/ui/main_window.py
-install -Dm644 assets/core/proxies.py %{buildroot}/usr/lib/%{name}/assets/core/proxies.py
+install -Dm644 assets/core/speedtest.py %{buildroot}/%{_libdir}/%{name}/assets/core/speedtest.py
+install -Dm644 assets/tray/system_tray.py %{buildroot}/%{_libdir}/%{name}/assets/tray/system_tray.py
+install -Dm644 assets/utils/debug.py %{buildroot}/%{_libdir}/%{name}/assets/utils/debug.py
+install -Dm644 assets/ui/dialogs.py %{buildroot}/%{_libdir}/%{name}/assets/ui/dialogs.py
+install -Dm644 assets/ui/main_window.py %{buildroot}/%{_libdir}/%{name}/assets/ui/main_window.py
+install -Dm644 assets/core/proxies.py %{buildroot}/%{_libdir}/%{name}/assets/core/proxies.py
 
 # Desktop entry
 install -Dm644 connex.desktop %{buildroot}/usr/share/applications/connex.desktop
@@ -63,7 +63,8 @@ install -Dm644 README.md %{buildroot}/usr/share/doc/%{name}/README.md
 %files
 %license usr/share/licenses/%{name}/LICENSE
 %doc usr/share/doc/%{name}/README.md
-/usr/bin/connex
-/usr/share/applications/connex.desktop
-/usr/share/icons/hicolor/scalable/apps/connex.svg
-/etc/xdg/autostart/connex-tray.desktop
+%{_bindir}/connex
+%{_libdir}/connex/assets/
+%{_datadir}/applications/connex.desktop
+%{_datadir}/icons/hicolor/scalable/apps/connex.svg
+%{_sysconfdir}/xdg/autostart/connex-tray.desktop
